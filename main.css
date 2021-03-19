@@ -4,9 +4,16 @@
 }
 
 .header > h3, h5 {
-    margin: 0;
+    margin-left: 800px;
     padding-top: 20px;
-    text-align: center;
+}
+
+#center {
+    margin-left: 10vw;
+}
+
+.col-lg-6 {
+    display:flex;
 }
 
 /* Include any custom CSS styling here! */

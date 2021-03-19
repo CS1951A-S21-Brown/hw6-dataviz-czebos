@@ -1,12 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
         <meta charset="utf-8">
-        <title>Assignment 6 &laquo; Data Visualization Dashboard&raquo;</title>
+        <title style="margin-left: 700px">Assignment 6 &laquo; Data Visualization Dashboard&raquo;</title>
         <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
         <link rel="stylesheet" href="main.css"/>
         <!--Feel free to add more CSS files as needed-->
         <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+
     </head>
 <body>
     <div class="header">
@@ -14,15 +15,92 @@
     </div>
     <!--  We included a basic HTML structure for the 3 graphs here. Feel free to change this if you'd like  -->
     <div class="row">
-        <div class="col-lg-6">
-            <div id="graph1"></div>
-            <div id="graph2"></div><br/>
+        <div style="display: flex" class="col-lg-6">
+            <div id='col'>
+                <div id="container">
+                    </divi>
+                </div>
+                <div id="graph1">
+                </div>
+                <div style="margin-left: 150px" id="center">
+                    <button id="noye" type="button" class="btn btn-info" onclick="render('1998')">1998</button>
+                    <button id="ye" type="button" class="btn btn-info" onclick="render('2004')">2004</button>
+                    <button id="noye" type="button" class="btn btn-info" onclick="render('2006')">2006</button>
+                    <button id="ye" type="button" class="btn btn-info" onclick="render('2008')">2008</button>
+                    <button id="noye" type="button" class="btn btn-info" onclick="render('2016')">2016</button>
+                </div>
+            </div>
+            <div id="graph2"></div><br />
+            <div id="container">
+                </divi>
+            </div>
+            <div id='col'>
+                <div id="graph3"></div>
+                <div style="margin-left: 300px" id="center">
+                    <button id="noye" type="button" class="btn btn-info" onclick="render2('2014')">2014</button>
+                    <button id="ye" type="button" class="btn btn-info" onclick="render2('2018')">2018</button>
+                </div>
+            </div>
+            </div>
+            <div class="col-lg-6">
+
+               
+
+            </div>
         </div>
-        <div class="col-lg-6">
-            <div id="graph3"></div>
-        </div>
+    <div style="font-size: 20px">
+        Questions: <br />
+        1. My boss wants to know the number of games played by year, and include at least 5 years. <br />
+        I have included 5 years to choose from, and to see the number of years played by a team, you may<br />
+        hover over a circle. The total games played is also at the top of the infographic. The infographic <br />
+        also displays the proximity of games played and the relationship between teams and games played amongst them.<br /> <br />
+        He also wants to know the top winning nations. The second infographic shows the winning percentage for only <br />
+        the top 10 nations. The color is highlighted more green for a higher winning percentage. If you hover over <br />
+        a country, it also displays the exact win percentage. <br /> <br />
+        Finally, my boss wants to know what nation to bet on. The last infographic shows the score differential by games played in the world cup.<br />
+        It is ordered from best 75 percentaile to worst, so you can see how often they perform well. This <br />
+        is displayed over the last two world cups, so we can see who is top performing by score differential. Score <br />
+        differential shows how well a team is beating their opponents and by what margin, which is an indicator of success. <br /> <br />
+        2. D3 is really helpful in multiple ways. Some of the key ways are its physics engine, <br />
+        its scaling, and flexibility in style/graphing ability. The physics engine helps us see correlation <br />
+        between nodes and its links (as shown in my first graph). The scaling is great because you can color coordinate <br />
+        based on somethings "influence" and adjust how influential the number scaling and color changing is. Finally <br />
+        There is so many libraries to choose from and helper functions to make the process even easier. You can create so many types of graphs. <br /> <br />
+        3. It is not the most optimal for dealing with large datasets. When I process 1000 points for the first <br />
+        infographic, there is lag. With more points, even more lag. The learning curve is very steep. <br />
+        Figuring out what all of these functions do and why they do what they do was very confusing for me. <br />
+        It would be even worse for a new engineer. Lastly, you're limited to D3. Although it is very expansive of a library, <br />
+        There is still potential infographics that could be displayed better or physics engines that one could implement
+        themselves to show unique relationships. <br /> <br />
+        4. In “A Comprehensive Guide to Accessible Data Visualization,” the article talks about the autonomy <br/>
+        of a accesible graph. One of the imporant things that it mentions is that color scheme should be accessible<br />
+        to color blind people. In fact, color is not nessesary in my infographics, only the darkness of the color,<br />
+        which can be detected by colorblind people. However, some of my font is small, which is not as accessible to someone<br />
+        who is hard of seeing. A change I could make going forward is to give larger text for the infographic, but <br />
+        also add blurbs that are large in font for people to catch the graphic quickly withe ease. <br /> <br />
+        5. Like I said earlier, there should be a start with a focus not on actual color itself. For example, don't <br/>
+        rely on color coding, rather use color for scaling. Make things very visible to the hard of seeing when planning. <br/>
+        For the neurological accesiblity, adding ways to make information consise and simple is also important. </br>
+        Think about all kinds of audiences when designing the infographic. <br/> <br/>
+
+        EXTRA CREDIT: <br/>
+        1. I implemented a dynamic stats calculation. This is in the third inforgraphic. <br/>
+        When you click the year, it gives you the games played in that World Cup Year, and then <br/>
+        retrieves the scored points by each of the teams, categorizes score by team, then calculates <br/>
+        the median, max, min, first quartile and third quartile of the score differential, and makes a <br/>
+        box and whisker plot out of it. This was one of the examples for extra credit. <br/> <br/>
+
+        2.a In the first graph, I used a flow type graphic. This shows the relationship amongst <br/>
+        how teams played other teams. When nodes are closer, they play each other and the closer nodes <br/>
+        opposing teams more, creating kind of like league clusters. <br/> <br/>
+
+        2.b In the second graph, I used a map type graphic. This shows the winning percentage for the <br/>
+        top 10 nations when you hover over the nation itself.
+
     </div>
     <!--Feel free to add more JavaScript files as needed-->
     <script type="text/javascript" src="main.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
 </body>
 </html>

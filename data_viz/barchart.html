@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>North America vs Global Sales of Sports Games</title>
+        <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+        <style type="text/css">
+            /* No style rules here */
+        </style>
+    </head>
+    <body>
+        <!--feel free to add style rules or just add styles directly to the d3 components-->
+        <svg id = "barChart" width = "10000" height = "10000000" >
+        </svg>
+        <script type="text/javascript">
+
+            figure = d3.select("#barChart");
+
+            var barHeight = 40;
+
+            d3.csv("part1_data.csv").then(data => {
+
+                data = data.filter(function(d) { return  (d.Genre == "Sports" && d.NA_Sales > 2) }).slice(1,11);
+                barChart = figure.selectAll('rect')
+                                 .data(data)
+                                .enter();
+                var barScale = 25
+                var barX = 460
+                barChart.append("text")
+                        .text(function(d) {return d.Name;})
+                        .attr("x", 25)
+                        .attr("y", function(d, i) { return 25 + barHeight*i + (barHeight/2); })
+                        .attr("font-size", 20)
+                    .attr("font-family", "Times New Roman");
+
+                barChart.append("text")
+                        .text(function(d) {return d.NA_Sales+"M";})
+                        .attr("x", 380)
+                        .attr("y", function(d, i) { return 25 + barHeight*i + (barHeight/2); })
+                        .attr("font-size", 20)
+                        .attr("font-family", "Times New Roman");
+
+                barChart.append("rect")
+                        .attr("x", barX)
+                        .attr("y", function(d, i) { return  barHeight*i + (barHeight/2); })
+                        .attr("width", function(d) {return d.NA_Sales*barScale} )
+                        .attr("height", barHeight)
+                        .attr("fill", "purple")
+                        .attr("stroke", "black");
+
+                barChart.append("rect")
+                        .attr("x", function(d) {return barX+d.NA_Sales*barScale;})
+                        .attr("y", function(d, i) { return  barHeight*i + (barHeight/2); })
+                        .attr("width", function(d) {return (d.Global_Sales - d.NA_Sales)*barScale;} )
+                        .attr("height", barHeight)
+                        .attr("fill", "green")
+                        .attr("stroke", "black")
+
+                barChart.append("text")
+                        .text(function(d) {return d.Global_Sales+"M";})
+                        .attr("x", function(d) {return barX+d.Global_Sales*barScale+10;})
+                        .attr("y", function(d, i) { return 25 + barHeight*i + (barHeight/2); })
+                        .attr("font-size", 20)
+                        .attr("font-family", "Times New Roman");
+
+            });
+
+        </script>
+    </body>
+</html>
